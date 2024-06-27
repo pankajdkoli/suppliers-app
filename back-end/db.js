@@ -10,7 +10,7 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-// Check the database connection
+// Check the database connection.
 pool.on("connect", () => {
   console.log("Connected to the database");
 });

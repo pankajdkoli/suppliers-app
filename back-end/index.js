@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5004;
 // Middleware
 app.use(bodyParser.json());
 
-// Test the database connection at startup
+// database connection at startup
 dbClient.connect((err, client, release) => {
   if (err) {
     console.error("Error acquiring client", err.stack);
