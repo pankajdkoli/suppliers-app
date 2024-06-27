@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/supplierdoc", async (req, res) => {
   const { clientId } = req.body;
 
-  // Debug logs to inspect incoming data
+  // Debug logs to inspect incoming data..
   console.log("req.body:", req.body);
   console.log("req.files:", req.files);
 
@@ -20,7 +20,7 @@ router.post("/supplierdoc", async (req, res) => {
 
   // Check if file is undefined or null
   if (!file) {
-    console.error("File is undefined or null");
+    console.error("File is undefined or null..");
     return res.status(400).send("File is undefined or null.");
   }
 
@@ -34,7 +34,7 @@ router.post("/supplierdoc", async (req, res) => {
       return res.status(500).send(err);
     }
 
-    // Insert file upload details into PostgreSQL
+    // Insert file upload details into PostgreSQL..
     const query =
       "INSERT INTO supplier_doc (user_id, file_name, file_path, uploaded_at) VALUES ($1, $2, $3, CURRENT_TIMESTAMP) RETURNING *";
     const values = [clientId, file.name, filePath];
@@ -45,7 +45,7 @@ router.post("/supplierdoc", async (req, res) => {
       res.send("File uploaded successfully.");
     } catch (error) {
       console.error("Error storing file upload details in database", error);
-      res.status(500).send("Error storing file upload details.");
+      res.status(500).send("Error storing file upload details...");
     }
   });
 });
